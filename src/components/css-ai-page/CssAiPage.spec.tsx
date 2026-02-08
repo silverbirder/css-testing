@@ -36,7 +36,6 @@ test("keeps global header on top after scrolling to demo", async () => {
   // Act
   document.documentElement.style.scrollBehavior = "auto";
   demoSection.scrollIntoView({ block: "start" });
-  await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
 
   // Assert
   const headerHit = document.elementFromPoint(100, 50);

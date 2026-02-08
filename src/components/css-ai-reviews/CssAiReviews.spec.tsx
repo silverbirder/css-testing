@@ -24,7 +24,6 @@ test("shows 3 full review cards and 1 clipped on desktop", async () => {
 
   // Act
   reel.scrollLeft = 0;
-  await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
   const fourth = cards.at(3);
   if (!fourth) {
     throw new Error("fourth review card not found");

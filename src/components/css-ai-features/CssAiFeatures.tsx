@@ -39,7 +39,6 @@ export const CssAiFeatures = () => {
           </p>
         </div>
         <div className="feature-card">
-          <div className="card-icon">🔧</div>
           <h3 className="card-title">開発効率化</h3>
           <p className="card-description">
             IDE拡張機能でコーディング中にAIアシスタントが常時サポート。
