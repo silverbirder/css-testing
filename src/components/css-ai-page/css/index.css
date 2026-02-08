@@ -305,7 +305,7 @@ html {
 .demo-video {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   padding: var(--spacing-base);
   background-color: var(--color-border);
 }
@@ -315,8 +315,10 @@ html {
   font-weight: var(--font-weight-bold);
 }
 
-.demo-description {
-  font-size: var(--font-size-sm);
+.demo-image {
+  width: 100%;
+  height: auto;
+  background-color: var(--color-white);
 }
 
 .step-items {

@@ -6,14 +6,16 @@ export const CssAiDemo = () => {
         <div className="sidebar-video">
           <div className="demo-video">
             <h3 className="demo-title">ライブデモ</h3>
-            <p className="demo-description">実際のCSS AIの動作をご覧ください</p>
+            <img className="demo-image" src="https://placehold.co/150x150" alt="ライブデモの動画" />
             <button className="btn">デモを開始</button>
           </div>
         </div>
         <div className="sidebar-steps">
           <div className="step-items">
             <div className="step-item">
-              <strong className="step-item-title">1. 要望を自然言語で入力</strong>
+              <strong className="step-item-title">
+                1. 要望を自然言語で入力
+              </strong>
               <p className="step-item-description">
                 「モダンなカードデザインを作って」など、自然な言葉でデザインを指示
               </p>
@@ -25,7 +27,9 @@ export const CssAiDemo = () => {
               </p>
             </div>
             <div className="step-item">
-              <strong className="step-item-title">3. プレビュー・調整・適用</strong>
+              <strong className="step-item-title">
+                3. プレビュー・調整・適用
+              </strong>
               <p className="step-item-description">
                 リアルタイムプレビューで確認し、微調整してプロジェクトに適用
               </p>
@@ -34,5 +38,5 @@ export const CssAiDemo = () => {
         </div>
       </div>
     </section>
-  )
+  );
 };
