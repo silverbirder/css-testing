@@ -1,15 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import HelloWorld from "./HelloWorld";
+import { CssAiTechStack } from "./CssAiTechStack";
 
 const meta = {
-  args: {
-    name: "Vitest",
-  },
-  component: HelloWorld,
-} satisfies Meta<typeof HelloWorld>;
+  component: CssAiTechStack,
+} satisfies Meta<typeof CssAiTechStack>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
