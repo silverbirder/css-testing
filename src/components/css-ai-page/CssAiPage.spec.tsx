@@ -7,37 +7,45 @@ import { CssAiPage } from "./CssAiPage";
 test("renders main sections", async () => {
   const { getByRole } = await render(<CssAiPage />);
 
-  await expect.element(
-    getByRole("heading", { name: "主要機能", exact: true }),
-  ).toBeInTheDocument();
-  await expect.element(
-    getByRole("heading", { name: "デモ", exact: true }),
-  ).toBeInTheDocument();
-  await expect.element(
-    getByRole("heading", { name: "料金プラン", exact: true }),
-  ).toBeInTheDocument();
-  await expect.element(
-    getByRole("heading", { name: "お問い合わせ", exact: true }),
-  ).toBeInTheDocument();
+  await expect
+    .element(getByRole("heading", { name: "主要機能", exact: true }))
+    .toBeInTheDocument();
+  await expect
+    .element(getByRole("heading", { name: "デモ", exact: true }))
+    .toBeInTheDocument();
+  await expect
+    .element(getByRole("heading", { name: "料金プラン", exact: true }))
+    .toBeInTheDocument();
+  await expect
+    .element(getByRole("heading", { name: "お問い合わせ", exact: true }))
+    .toBeInTheDocument();
 });
 
-test("keeps global header on top after scrolling to demo", async () => {
+test("sticky section title stays on top under the header", async () => {
   // Arrange
   await page.viewport(1200, 800);
   await render(<CssAiPage />);
 
   const header = document.querySelector<HTMLElement>(".fixed-header");
   const demoSection = document.querySelector<HTMLElement>("#demo");
+  const stickyTitle = demoSection?.querySelector<HTMLElement>(
+    ".sticky-section-title",
+  );
 
-  if (!header || !demoSection) {
-    throw new Error("header or demo section not found");
+  if (!header || !demoSection || !stickyTitle) {
+    throw new Error("header, demo section, or sticky title not found");
   }
 
   // Act
   document.documentElement.style.scrollBehavior = "auto";
-  demoSection.scrollIntoView({ block: "start" });
+  const headerBottom = header.getBoundingClientRect().bottom;
+  const stickyTitleTop = stickyTitle.getBoundingClientRect().top;
+  window.scrollTo({ top: stickyTitleTop });
+  await new Promise(requestAnimationFrame);
 
   // Assert
-  const headerHit = document.elementFromPoint(100, 50);
-  expect(headerHit?.closest(".fixed-header")).toBe(header);
+  const pointX = Math.round(window.innerWidth / 2);
+  const pointY = Math.round(headerBottom + 1);
+  const hit = document.elementFromPoint(pointX, pointY);
+  expect(hit?.closest(".sticky-section-title")).toBe(stickyTitle);
 });
